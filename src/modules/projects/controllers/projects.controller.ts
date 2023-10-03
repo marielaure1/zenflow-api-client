@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiCreatedResponse, ApiForbiddenResponse } from '@nestjs/swagger';
 import { ProjectsService } from '@/projects/services/projects.service';
-import CreateProjectDto  from '@/projects/dto/create-projects.dto';
+import { CreateProjectDto }  from '@/projects/dto/create-projects.dto';
 import { UpdateProjectDto } from '@/projects/dto/update-projects.dto';
 import { AppController } from '@/app.controller';
 import { Project } from '@/projects/entities/projects.entity';

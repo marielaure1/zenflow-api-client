@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException  } from '@nestjs/common';
 import { UsersService } from '@/users/services/users.service';
 import { User } from "@/users/entities/user.entity";
 import { JwtService } from '@nestjs/jwt';
-import Hash from '@/utils/hash.utils';
+import Hash from '~/utils/hash.utils';
 
 
 @Injectable()

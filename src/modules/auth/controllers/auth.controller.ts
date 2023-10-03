@@ -11,7 +11,7 @@ import {
 import { AuthService } from '@/auth/services/auth.service';
 import { AuthDto } from "@/auth/dto/auth.dto"
 import { AuthGuard } from '@/auth/guard/auth.guard';
-import { Public } from '@/decorators/public.decorator';
+import { Public } from '~/decorators/public.decorator';
 import { User } from '@/users/entities/user.entity'
 import { Model } from 'mongoose'
 

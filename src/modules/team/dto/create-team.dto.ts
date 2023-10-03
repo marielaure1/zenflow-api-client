@@ -1,8 +1,8 @@
 import { Document } from 'mongoose';
 import { IsNotEmpty, IsOptional, IsDate } from 'class-validator';
-import { PhoneDto } from '@/dtos/champs/phone.dto';
-import { EmailDto } from '@/dtos/champs/email.dto';
-import { RoleEnum } from '@/enums/role.enum';
+import { PhoneDto } from '~/dtos/champs/phone.dto';
+import { EmailDto } from '~/dtos/champs/email.dto';
+import { RoleEnum } from '~/enums/role.enum';
 import { EnumType } from 'typescript';
 
 export class CreateTeamDto extends Document {
