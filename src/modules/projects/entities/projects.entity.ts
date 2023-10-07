@@ -3,8 +3,10 @@ import { Document } from 'mongoose';
 import { CreateLinksProjectsDto } from '@/projects/dto/create-links-projects.dto';
 import { CreateMilestonesProjectsDto } from '@/projects/dto/create-milestones-projects.dto';
 
+export type ProjectDocument = Project & Document;
+
 @Schema()
-export class Project extends Document {
+export class Project {
   @Prop({ required: true })
   name: string;
 

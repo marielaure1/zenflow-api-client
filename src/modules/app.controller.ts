@@ -16,7 +16,7 @@ import { Response } from 'express';
 import { ApiTags, ApiCreatedResponse, ApiForbiddenResponse } from '@nestjs/swagger';
 
 @Controller()
-export abstract class AppController<Service extends AppService<AppModel, CreateDto, UpdateDto>, AppModel extends Document, CreateDto, UpdateDto> {
+export abstract class AppController<Service extends AppService<AppModel, CreateDto, UpdateDto>, AppModel, CreateDto, UpdateDto> {
   constructor(
     private readonly service: Service
     ) {}

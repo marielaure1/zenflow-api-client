@@ -1,11 +1,13 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { PhoneDto } from '@/dtos/champs/phone.dto';
-import { EmailDto } from '@/dtos/champs/email.dto';
-import { AddressDto } from '@/dtos/champs/address.dto';
+import { PhoneDto } from '~/dtos/champs/phone.dto';
+import { EmailDto } from '~/dtos/champs/email.dto';
+import { AddressDto } from '~/dtos/champs/address.dto';
+
+export type TeamDocument = Team & Document;
 
 @Schema()
-export default class Team extends Document {
+export class Team extends Document {
   @Prop({ required: true })
   firstName: string;
 

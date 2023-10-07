@@ -7,10 +7,8 @@ import { UpdateProjectDto } from '@/projects/dto/update-projects.dto';
 import { AppService } from '@/app.service';
 
 @Injectable()
-export class ProjectsService extends AppService<Project, CreateProjectDto, UpdateProjectDto>{
-  constructor(
-    @InjectModel('Project') private readonly projectModel: Model<Project>
-    ) {
-      super(projectModel);
-    }
-}
+export class ProjectsService {}
+// export class ProjectsService extends AppService<Project, CreateProjectDto, UpdateProjectDto>{
+ 
+//   private projectModel: Model<Project>
+// }

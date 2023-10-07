@@ -18,13 +18,14 @@ import { Project } from '@/projects/entities/projects.entity';
 
 @ApiTags('projects')
 @Controller('projects')
-export class ProjectsController extends AppController<ProjectsService, Project, CreateProjectDto, UpdateProjectDto>{
-    constructor(
-        private readonly projectsService: ProjectsService
-    ) {
-        super(projectsService);
-    }
+export class ProjectsController{}
+// export class ProjectsController extends AppController<ProjectsService, Project, CreateProjectDto, UpdateProjectDto>{
+//     constructor(
+//         private readonly projectsService: ProjectsService
+//     ) {
+//         super(projectsService);
+//     }
 
-}
+// }
 
 

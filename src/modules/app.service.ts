@@ -3,17 +3,16 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model, Document } from 'mongoose';
 
 @Injectable()
-export abstract class AppService<AppModel extends Document, CreateDto, UpdateDto> {
-  constructor(
-    @InjectModel('AppModel') private readonly appModel: Model<AppModel>
-    ) {}
+export abstract class AppService<AppModel, CreateDto, UpdateDto> {
+  
+  private appModel: Model<AppModel>
 
-  async create(createDto: CreateDto): Promise<AppModel> {
+  async create(createDto: CreateDto): Promise<Object> {
     const createdModel = await new this.appModel({
       ...createDto,
       createdAt: new Date()
     }).save();
-    return createdModel;
+    return { response: "success"};
   }
 
   async findAll(): Promise<AppModel[]> {

@@ -8,56 +8,54 @@ import Hash from '~/utils/hash.utils';
 @Injectable()
 export class AuthService {
 
-  constructor(
-    private usersService: UsersService,
-    private jwtService: JwtService,
-    private hash: Hash
-  ) {}
+  // private hash: Hash
+  // private usersService: UsersService
+  // private jwtService: JwtService
 
-  async login(identifiant: string, pass: string): Promise<Object> {
-    const user = await this.usersService.findOne(identifiant);
+  // async login(identifiant: string, pass: string): Promise<Object> {
+  //   const user = await this.usersService.findOne(identifiant);
 
-    const passCompare = await  this.hash.hashCompareData(pass, user?.password);
+  //   const passCompare = await  this.hash.hashCompareData(pass, user?.password);
 
-    if (!passCompare) {
-      throw new UnauthorizedException();
-    }
+  //   if (!passCompare) {
+  //     throw new UnauthorizedException();
+  //   }
 
-    const payload = { sub: user._id, username: user.email };
+  //   const payload = { sub: user._id, username: user.email };
 
-    const token = await this.jwtService.signAsync(payload);
+  //   const token = await this.jwtService.signAsync(payload);
 
-    return {
-      token
-    };
-  }
+  //   return {
+  //     token
+  //   };
+  // }
 
-  async register(identifiant: string, pass: string): Promise<Object> {
-    const user = await this.usersService.findOne(identifiant);
-    if (user?.password !== pass) {
-      throw new UnauthorizedException();
-    }
+  // async register(identifiant: string, pass: string): Promise<Object> {
+  //   const user = await this.usersService.findOne(identifiant);
+  //   if (user?.password !== pass) {
+  //     throw new UnauthorizedException();
+  //   }
 
-    const payload = { sub: user._id, username: user.email };
+  //   const payload = { sub: user._id, username: user.email };
 
-    const token = await this.jwtService.signAsync(payload);
-    return {
-      token,
-    };
-  }
+  //   const token = await this.jwtService.signAsync(payload);
+  //   return {
+  //     token,
+  //   };
+  // }
 
-  async logout(identifiant: string, pass: string): Promise<Object> {
-    const user = await this.usersService.findOne(identifiant);
-    if (user?.password !== pass) {
-      throw new UnauthorizedException();
-    }
+  // async logout(identifiant: string, pass: string): Promise<Object> {
+  //   const user = await this.usersService.findOne(identifiant);
+  //   if (user?.password !== pass) {
+  //     throw new UnauthorizedException();
+  //   }
 
-    const payload = { sub: user._id, username: user.email };
+  //   const payload = { sub: user._id, username: user.email };
 
-    const token = await this.jwtService.signAsync(payload);
+  //   const token = await this.jwtService.signAsync(payload);
 
-    return {
-      token,
-    };
-  }
+  //   return {
+  //     token,
+  //   };
+  // }
 }
