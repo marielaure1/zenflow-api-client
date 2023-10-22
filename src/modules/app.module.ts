@@ -6,7 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ProjectsModule } from '@/projects/projects.module';
 import { TeamModule } from '@/team/team.module';
 import { UsersModule } from '@/users/users.module';
-import { ClientsModule } from '@/clients/clients.module';
+// import { ClientsModule } from '@/clients/clients.module';
 import { AuthModule } from '@/auth/auth.module';
 
 @Module({
@@ -18,7 +18,7 @@ import { AuthModule } from '@/auth/auth.module';
     ProjectsModule,
     TeamModule,
     UsersModule,
-    ClientsModule,
+    // ClientsModule,
     AuthModule,
   ],
   controllers: [],

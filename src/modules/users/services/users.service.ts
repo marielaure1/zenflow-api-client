@@ -4,13 +4,15 @@ import { Model } from 'mongoose';
 import { CreateUserDto } from '@/users/dto/create-user.dto';
 import { UpdateUserEmailDto } from '@/users/dto/update-user-email.dto';
 import { UpdateUserPasswordDto } from '@/users/dto/update-user-password.dto';
-import { User } from '@/users/entities/user.entity';
+import { User, UserDocument } from '@/users/entities/user.entity';
 import { AppService } from '@/app.service';
 
 @Injectable()
-export class UsersService extends AppService<User, CreateUserDto, CreateUserDto>{
+export class UsersService extends AppService<UserDocument, CreateUserDto, CreateUserDto>{
   
-  private usersModel: Model<User>
+  constructor(@InjectModel(User.name) private usersModel: Model<UserDocument>) {
+    super(usersModel);
+  }
 
     async findOneByEmail(email: string): Promise<User> {
       try{
@@ -19,7 +21,7 @@ export class UsersService extends AppService<User, CreateUserDto, CreateUserDto>
         return findOne;
 
       }catch(error){
-        console.log(error);  
+        console.log("UsersModule > UsersService > findOneByEmail : ", error);  
       }
     }
 

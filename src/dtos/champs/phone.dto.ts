@@ -8,6 +8,9 @@ export class PhoneDto extends Document {
     @IsNotEmpty()
     value: string;
 
+    @IsNotEmpty()
+    order: number;
+
     @IsOptional()
     @IsDate()
     createdAt: Date;

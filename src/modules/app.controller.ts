@@ -22,7 +22,6 @@ export abstract class AppController<Service extends AppService<AppModel, CreateD
     ) {}
 
   @Post()
-  @ApiForbiddenResponse({ description: 'Forbidden.'})
   async create(@Body() createDto: CreateDto, @Res() res: Response) {
     try{
       const createResponse = await this.service.create(createDto);
@@ -30,8 +29,11 @@ export abstract class AppController<Service extends AppService<AppModel, CreateD
         createResponse
       ]);
 
+      console.log("fdfdg");
+      
+
     } catch(error){
-        console.log(error);
+        console.log("AppController > create : ", error);
     }
 
   }

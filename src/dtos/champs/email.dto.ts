@@ -9,6 +9,9 @@ export class EmailDto extends Document {
     @IsEmail()
     value: string;
 
+    @IsNotEmpty()
+    order: number;
+
     @IsOptional()
     @IsDate()
     createdAt: Date;

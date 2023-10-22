@@ -1,8 +1,10 @@
+import { EnumType } from 'typescript';
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types  } from 'mongoose';
 import { PhoneDto } from '~/dtos/champs/phone.dto';
 import { EmailDto } from '~/dtos/champs/email.dto';
 import { AddressDto } from '~/dtos/champs/address.dto';
+import { RoleEnum } from '~/enums/role.enum';
 
 export type TeamDocument = Team & Document;
 
@@ -14,38 +16,41 @@ export class Team extends Document {
   @Prop({ required: true })
   lastName: string;
 
-  @Prop({ required: true })
-  picture: string;
+  @Prop()
+  picture?: string;
 
   @Prop({ required: true })
-  phone: Array<PhoneDto>;
+  phones: Array<PhoneDto>;
   
   @Prop({ required: true })
-  email: Array<EmailDto>;
-
-  @Prop({ required: true })
-  address: AddressDto;
-
-  @Prop({ required: true })
-  notes: string;
-
-  @Prop({ required: true })
-  rôle: string;
-
-  @Prop({ required: true })
-  domaines: string;
-
-  @Prop({ required: true })
-  metiers: string;
-
-  @Prop({ required: true })
-  userId: string;
+  emails: Array<EmailDto>;
 
   @Prop()
-  createdAt: Date;
+  address?: AddressDto;
+
+  @Prop()
+  notes?: string;
+
+  @Prop({ required: true, type: String, enum: RoleEnum, default: "GUEST"  })
+  role: RoleEnum;
+
+  @Prop({ required: true })
+  domains: Array<String>;
+
+  @Prop({ required: true })
+  jobs: Array<String>;
+
+  @Prop({ required: true })
+  permissions: Array<Object>;
+
+  @Prop({ type: Types.ObjectId, ref: 'User' })
+  user: Types.ObjectId;
+
+  @Prop()
+  createdAt?: Date;
 
   @Prop({ default: new Date()})
-  updatedAt: Date;
+  updatedAt?: Date;
 }
 
 export const TeamSchema = SchemaFactory.createForClass(Team);

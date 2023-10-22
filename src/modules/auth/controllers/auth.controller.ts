@@ -1,23 +1,26 @@
-import {
+import { 
+  Controller, 
+  Get, 
+  Post, 
+  Put, 
+  Patch, 
+  Delete, 
   Body,
-  Controller,
-  Get,
-  HttpCode,
+  Param,
+  Res,
   HttpStatus,
-  Post,
-  Request,
-  UseGuards
+  HttpCode
 } from '@nestjs/common';
 import { AuthService } from '@/auth/services/auth.service';
-import { AuthDto } from "@/auth/dto/auth.dto"
+import { AuthUserTeamDto } from "@/auth/dto/auth-user-team.dto"
 import { AuthGuard } from '@/auth/guard/auth.guard';
 import { Public } from '~/decorators/public.decorator';
 import { User } from '@/users/entities/user.entity'
 import { Model } from 'mongoose'
-
+import { UsersService } from '@/users/services/users.service';
 @Controller('auth')
 export class AuthController {
-  // constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   // @Public()
   // @HttpCode(HttpStatus.OK)
@@ -26,12 +29,13 @@ export class AuthController {
   //   return this.authService.login(authDto.email, authDto.password);
   // }
 
-  // @Public()
-  // @HttpCode(HttpStatus.OK)
-  // @Post('register')
-  // register(@Body() authDto: AuthDto) {
-  //   return this.authService.register(authDto.email, authDto.password);
-  // }
+  @Public()
+  @HttpCode(HttpStatus.OK)
+  @Post('register/:type')
+  register(@Param('type') type: string, @Body() authUserTeamDto: AuthUserTeamDto) {
+
+    return this.authService.register(authUserTeamDto, type);
+  }
 
   // @HttpCode(HttpStatus.OK)
   // @Post('logout')

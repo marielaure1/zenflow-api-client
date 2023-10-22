@@ -8,14 +8,20 @@ export class User {
   @Prop({ required: true, unique: true })
   email: string;
 
-  @Prop()
+  @Prop({ required: true })
   password: string;
 
-  @Prop()
-  createdAt: Date;
+  @Prop({ required: true, default: "Desactived" })
+  statut: string;
 
-  @Prop({ default: new Date()})
-  updatedAt: Date;
+  @Prop()
+  token?: string;
+
+  @Prop()
+  createdAt?: Number;
+
+  @Prop({ default: Date.now()})
+  updatedAt?: Number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

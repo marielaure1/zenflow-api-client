@@ -1,17 +1,17 @@
 import bcrypt from 'bcrypt'
-import { log } from 'console'
+import * as CryptoJS from 'crypto-js';
 
 export default class Hash{
-    constructor(
-        private salt: 10,
-        private bcrypt: bcrypt
-    ) {}
 
-    async hashData(data: string) {
+    private salt = 10;
+    private bcrypt = bcrypt;
+    private crypto = CryptoJS;
+
+    async hashData(data: string, saltCustom?: Number) {
 
         try{
-            const salt = await this.bcrypt.genSalt(this.salt)
-            const hash = await bcrypt.hash(data, salt)
+            const salt = await this.bcrypt.genSalt(saltCustom ? saltCustom : this.salt)
+            const hash = await this.bcrypt.hash(data, salt)
 
             return hash
 
@@ -20,11 +20,11 @@ export default class Hash{
         }
     }
 
-    async hashCompareData(data: string, dataToCompare: string) {
+    async hashCompareData(data: string, dataToCompare: string, saltCustom?: Number) {
 
         try{
-            const salt = await this.bcrypt.genSalt(this.salt)
-            const hash = await bcrypt.hash(data, salt)
+            const salt = await this.bcrypt.genSalt(saltCustom ? saltCustom : this.salt)
+            const hash = await this.bcrypt.hash(data, salt)
 
             const compareData = await this.bcrypt.compare(dataToCompare, hash)
 
@@ -32,6 +32,17 @@ export default class Hash{
 
         } catch(error){
             console.log(error.message);         
+        }
+    }
+
+    generateToken(data: string){
+        try{
+            const secretKey = "ID CLIENT"
+            const token = this.crypto.HmacSHA256(data, secretKey).toString();
+            
+            return token;
+        } catch (error){
+            console.log(error);    
         }
     }
 }

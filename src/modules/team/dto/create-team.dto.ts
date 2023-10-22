@@ -1,50 +1,50 @@
-import { Document } from 'mongoose';
 import { IsNotEmpty, IsOptional, IsDate } from 'class-validator';
 import { PhoneDto } from '~/dtos/champs/phone.dto';
 import { EmailDto } from '~/dtos/champs/email.dto';
 import { RoleEnum } from '~/enums/role.enum';
-import { EnumType } from 'typescript';
 
-export class CreateTeamDto extends Document {
+export class CreateTeamDto {
+  @IsNotEmpty()
+  firstName: string;
 
-    @IsNotEmpty()
-    firstName: string;
+  @IsNotEmpty()
+  lastName: string;
 
-    @IsNotEmpty()
-    lastName: string;
+  @IsOptional()
+  picture?: string;
 
-    @IsNotEmpty()
-    picture: string;
+  @IsNotEmpty()
+  phones: Array<PhoneDto>;
 
-    @IsNotEmpty()
-    phone: Array<PhoneDto>;
-    
-    @IsNotEmpty()
-    email: Array<EmailDto>;
+  @IsNotEmpty()
+  emails: Array<EmailDto>;
 
-    @IsNotEmpty()
-    address: string;
+  @IsOptional()
+  address?: string;
 
-    @IsNotEmpty()
-    notes: string;
+  @IsOptional()
+  notes?: string;
 
-    @IsNotEmpty()
-    rôle: RoleEnum;
+  @IsNotEmpty()
+  role: RoleEnum;
 
-    @IsNotEmpty()
-    domaines: string;
+  @IsNotEmpty()
+  domains: Array<String>;
 
-    @IsNotEmpty()
-    metiers: string;
+  @IsNotEmpty()
+  jobs: Array<String>;
 
-    @IsNotEmpty()
-    userId: string;
+  @IsNotEmpty()
+  permissions: Array<Object>;
 
-    @IsOptional()
-    @IsDate()
-    createdAt: Date;
+  @IsNotEmpty()
+  user: Object;
 
-    @IsOptional()
-    @IsDate()
-    updatedAt: Date;
+  @IsOptional()
+  @IsDate()
+  createdAt?: Date;
+
+  @IsOptional()
+  @IsDate()
+  updatedAt?: Date;
 }

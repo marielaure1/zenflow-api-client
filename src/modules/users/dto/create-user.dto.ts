@@ -6,6 +6,18 @@ export class CreateUserDto extends User {
   @IsEmail()
   email: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   password: string;
+
+  @IsNotEmpty()
+  statut: string;
+
+  @IsOptional()
+  token?: string;
+
+  @IsOptional()
+  createdAt?: Number;
+
+  @IsOptional()
+  updatedAt?: Number;
 }
